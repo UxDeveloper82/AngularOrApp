@@ -23,7 +23,11 @@
         <hr />
       </div>
     </div>
-    <div class="row"></div>
+    <div class="row">
+      <div *ngFor="let repair of repairs">
+            <app-repair-card [repair]="repair" class="col-md-3"></app-repair-card>
+      </div>
+  </div>
   </div>
 </section>
 <section id="services">

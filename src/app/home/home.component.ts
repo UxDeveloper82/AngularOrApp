@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { RepairsService } from '../_services/repairs.service';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  
+
   areaCovers: Array<string> = [
     'Orlando', 'Celebration', 'Haines City', 'Winter Park',
     'Orlo Vista', 'Pine Hills', 'Maitland', 'Apopka', 'Ocooee',
@@ -16,9 +17,18 @@ export class HomeComponent implements OnInit {
   repairs: Array<any>;
   error: string;
 
-  constructor() { }
+  constructor(private repairsService: RepairsService) { }
 
   ngOnInit(): void {
+    this.getRepairs();
+  }
+
+  getRepairs() {
+    this.repairsService.getAllRepairs()
+      .subscribe(res =>
+        this.repairs = res
+      );
+
   }
 
 }

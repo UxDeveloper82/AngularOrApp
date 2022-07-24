@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RepairsService } from '../_services/repairs.service';
 
 @Component({
   selector: 'app-personal',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./personal.component.css']
 })
 export class PersonalComponent implements OnInit {
+  users: Array<any>;
+  error: string;
 
-  constructor() { }
+  constructor(private repairsService: RepairsService) { }
 
   ngOnInit(): void {
+    this.repairsService.getAllUsers()
+    .subscribe(
+      data => this.users = data,
+      error => this.error = error.statusText
+    );
   }
 
 }

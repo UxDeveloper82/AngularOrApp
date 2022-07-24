@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-repair-card',
   templateUrl: './repair-card.component.html',
-  styleUrls: ['./repair-card.component.css']
+  styleUrls: ['./repair-card.component.css'],
 })
 export class RepairCardComponent implements OnInit {
-  repairs: any;
-  constructor() { }
+  @Input('repair') repair:any;
+
+  constructor() {}
 
   ngOnInit(): void {
+
   }
+
 
 }
